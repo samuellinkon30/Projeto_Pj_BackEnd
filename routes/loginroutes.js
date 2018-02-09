@@ -26,7 +26,7 @@ exports.register = function(req,res){
     if (results[0].email == email){
       res.send({
         "code":400,
-        "failed":"emal alredy register"
+        "Erro":"Email ja Cadastrado"
     })
   } else {
      connection.query('INSERT INTO users SET ?',users, function (error, results, fields) {
@@ -34,13 +34,13 @@ exports.register = function(req,res){
         console.log("error ocurred",error);
         res.send({
           "code":400,
-          "failed":"error ocurred"
+          "Erro":"Erro ao Acessar o DataBase"
         })
       } else {
         console.log('The solution is: ', results);
         res.send({
           "code":200,
-          "success":"user registered sucessfully"
+          "success":"Usuario Registrado"
         });
       }
     }); 
@@ -55,27 +55,27 @@ exports.login = function(req,res){
     if (error) {
       res.send({
         "code":400,
-        "failed":"error ocurred"
+        "Erro":"Erro ao acessar o DataBase"
       })
   } else {
     if(results.length >0){
       if(results[0].password == password){
         res.send({
           "code":200,
-          "success":"login sucessfull"
+          "success":"Login Efetuado com Sucesso"
         });
       }
       else {
         res.send({
           "code":204,
-          "success":"Email and password does not match"
+          "success":"Email ou Senha Incorretos"
         });
       }
     }
     else {
       res.send({
         "code":204,
-        "success":"Email does not exits"
+        "success":"Email nao Cadastrado"
       });
     }
   }
