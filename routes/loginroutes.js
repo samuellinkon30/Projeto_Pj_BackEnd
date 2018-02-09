@@ -3,7 +3,7 @@ var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
   password : 'samuel',
-  database : 'db'
+  database : 'banco_dados'
 });
 connection.connect(function(err){
 if(!err) {
@@ -20,7 +20,7 @@ exports.register = function(req,res){
     "name":req.body.first_name,
     "email":req.body.email,
     "password":req.body.password,
- 
+    
   }
 
  var email= req.body.email;
@@ -30,7 +30,7 @@ exports.register = function(req,res){
     // console.log("error ocurred",error);
     res.send({
       "code":400,
-      "failed":"email alredy register"
+      "failed":"emal alredy register"
     })
   } else
   {
